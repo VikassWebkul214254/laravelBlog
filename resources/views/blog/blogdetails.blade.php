@@ -24,8 +24,8 @@
             @if ($errors->has('email'))
                 <span class="text-danger text-left">{{ $errors->first('email') }}</span>
             @endif
-        </div>  
-      
+        </div>
+
         @endif
         <div class="mb-3">
             <textarea name="comment" class="form-control" placeholder="Text.....">{{ old('comment') }}</textarea>
@@ -40,7 +40,7 @@
     <div class="card">
         <div class="card-body">
             {{ $blogcomment->comment }}
-            
+
             <p>
                <small>{{ $blogcomment->email }}</small>
             </p>
@@ -49,5 +49,5 @@
     </div>
     <br/>
     @endforeach
-  
+
     @endsection

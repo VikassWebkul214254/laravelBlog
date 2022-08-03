@@ -49,7 +49,7 @@ class blogDetails extends Controller
      */
     public function show($id)
     {
-        
+
         if(Auth::check())
         {
             $userloging = true;
@@ -59,7 +59,7 @@ class blogDetails extends Controller
         $blog = Blog::where(['id'=>$id])->first();
         $user = User::where(['id'=>$blog->customer_id])->first();
         $blogcomment = BlogsComment::where(['blog_id'=>$id,])->get();
-        
+
         return view('blog.blogdetails',['blog'=>$blog,'user'=>$user , 'blogcomments'=>$blogcomment, 'userloging' => $userloging]);
         //
     }

@@ -37,17 +37,17 @@
                         </td>
                         <td>
                             <form action="{{ route('blog.destroy',$blog->id) }}" method="POST">
-   
+
                                 <a class="btn btn-primary" href="{{ route('blog.edit',$blog->id) }}">Edit</a>
-                            
+
                                 @csrf
                                 @method('DELETE')
-                  
+
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
-                    
-                            
-        
+
+
+
                         </td>
                     </tr>
                     @endforeach
@@ -60,7 +60,7 @@
         <div class="col-2">
             </br><h3 class="text-center">Profile</h3>
             <table class="table table-bordered">
-        
+
                 <tbody>
                     <tr>
                         <th>UserName: </th>

@@ -11,7 +11,7 @@ class CommentController extends Controller
 {
 
     public function update(CommentRequest $request , $blog_id , $user_id)
-    {  
+    {
         $Commented = BlogsComment::create(['email'=>$request->email,'comment'=> $request->comment,'blog_id'=>$blog_id , 'customer_id'=>$user_id]);
         return redirect('/blogdeatils/show/'.$blog_id)->with('success', "Comment Successfully Submit.");
     }

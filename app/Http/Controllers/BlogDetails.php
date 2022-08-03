@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\User;
+use App\Models\BlogsComment;
 use Illuminate\Support\Facades\Auth;
 
 class blogDetails extends Controller
@@ -48,10 +49,18 @@ class blogDetails extends Controller
      */
     public function show($id)
     {
+        
+        if(Auth::check())
+        {
+            $userloging = true;
+        }else{
+            $userloging = false;
+        }
         $blog = Blog::where(['id'=>$id])->first();
         $user = User::where(['id'=>$blog->customer_id])->first();
-     
-        return view('blog.blogdetails',['blog'=>$blog,'user'=>$user]);
+        $blogcomment = BlogsComment::where(['blog_id'=>$id,])->get();
+        
+        return view('blog.blogdetails',['blog'=>$blog,'user'=>$user , 'blogcomments'=>$blogcomment, 'userloging' => $userloging]);
         //
     }
 

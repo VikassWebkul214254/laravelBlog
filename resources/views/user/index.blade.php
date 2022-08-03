@@ -2,8 +2,9 @@
 
 @section('content')
 @auth
+
     <div class="row">
-        <div class="col-10">
+        <div class="col-8">
             </br><h3 class="text-center">Blog List</h3>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">{{ $message }}</div>
@@ -26,7 +27,7 @@
                     @foreach ($blogs as $blog)
                     <tr>
                         <td>{{ $blog->blog_title }}</td>
-                        <td>{{ $blog->blog_desc }}</td>
+                        <td>{{ Str::limit($blog->blog_desc,10) }}</td>
                         <td>
                             @if ($blog->status == 1)
                                 Enable
@@ -38,7 +39,7 @@
                             <form action="{{ route('blog.destroy',$blog->id) }}" method="POST">
    
                                 <a class="btn btn-primary" href="{{ route('blog.edit',$blog->id) }}">Edit</a>
-               
+                            
                                 @csrf
                                 @method('DELETE')
                   
